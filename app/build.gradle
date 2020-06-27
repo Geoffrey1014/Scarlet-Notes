@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.zellius.shortcut-helper'
+apply plugin: 'jacoco'
 
 shortcutHelper.filePath = '../shortcuts.xml'
 
@@ -20,6 +21,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
         }
     }
 }

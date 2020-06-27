@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "165703688804",
+    "firebase_url": "https://scarlet-notes-study.firebaseio.com",
+    "project_id": "scarlet-notes-study",
+    "storage_bucket": "scarlet-notes-study.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:165703688804:android:23acf6515cca22682ab571",
+        "android_client_info": {
+          "package_name": "com.bijoysingh.quicknote.pro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "165703688804-vitff8idhl9ltrblk2pl7tsb9m00en1e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdtNPrbkrXzpxbxhpRXCCeLY350_VH1o4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "165703688804-vitff8idhl9ltrblk2pl7tsb9m00en1e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

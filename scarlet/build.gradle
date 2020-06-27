@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.zellius.shortcut-helper'
+apply plugin: 'jacoco'
 
 shortcutHelper.filePath = '../shortcuts.xml'
 
@@ -15,6 +16,7 @@ android {
         versionCode rootProject.ext.appconfig_version_code
         versionName rootProject.ext.appconfig_version
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     flavorDimensions "tier"
     productFlavors {
@@ -38,6 +40,9 @@ android {
             multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            testCoverageEnabled true
+        }
     }
 }
 
@@ -52,6 +57,8 @@ dependencies {
 
     implementation "com.google.android.gms:play-services-auth:16.0.1"
     implementation 'com.google.android.gms:play-services-drive:16.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
 }
 
 apply plugin: 'kotlin-android-extensions'
