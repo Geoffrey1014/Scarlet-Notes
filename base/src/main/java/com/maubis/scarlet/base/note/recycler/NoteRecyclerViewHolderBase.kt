@@ -3,6 +3,7 @@ package com.maubis.scarlet.base.note.recycler
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.CardView
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -66,6 +67,7 @@ open class NoteRecyclerViewHolderBase(context: Context, view: View) : RecyclerVi
     view.setOnClickListener { viewClick(item.note, extra) }
     view.setOnLongClickListener {
       viewLongClick(item.note, extra)
+      Log.i("Themis", "populate: step 4: longClick 一个 note")
       false
     }
     view.setCardBackgroundColor(item.note.color)

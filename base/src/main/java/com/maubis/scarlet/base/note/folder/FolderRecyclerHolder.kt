@@ -3,12 +3,14 @@ package com.maubis.scarlet.base.note.folder
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.widget.CardView
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.github.bijoysingh.starter.recyclerview.RecyclerViewHolder
 import com.github.bijoysingh.uibasics.views.UITextView
 import com.maubis.scarlet.base.R
 import com.maubis.scarlet.base.support.recycler.RecyclerItem
+import kotlin.math.log
 
 class FolderRecyclerHolder(context: Context, view: View) : RecyclerViewHolder<RecyclerItem>(context, view) {
 
@@ -39,6 +41,7 @@ class FolderRecyclerHolder(context: Context, view: View) : RecyclerViewHolder<Re
     view.setCardBackgroundColor(item.folder.color)
     view.setOnClickListener {
       item.click()
+      Log.i("Themis", "populate: step 2: 点击进入文件夹")
     }
     view.setOnLongClickListener {
       item.longClick()

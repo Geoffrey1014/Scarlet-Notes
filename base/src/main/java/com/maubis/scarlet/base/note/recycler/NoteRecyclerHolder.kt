@@ -2,6 +2,7 @@ package com.maubis.scarlet.base.note.recycler
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.maubis.scarlet.base.MainActivity
 import com.maubis.scarlet.base.database.room.note.Note
@@ -19,6 +20,7 @@ class NoteRecyclerHolder(context: Context, view: View) : NoteRecyclerViewHolderB
 
   override fun viewClick(note: Note, extra: Bundle?) {
     actionOrUnlockNote(note, Runnable { openNote(note) })
+
   }
 
   override fun viewLongClick(note: Note, extra: Bundle?) {

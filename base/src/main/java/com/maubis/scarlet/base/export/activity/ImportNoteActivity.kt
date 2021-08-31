@@ -98,7 +98,7 @@ class ImportNoteActivity : ThemedActivity() {
     val theme = CoreConfig.instance.themeController()
     background.setBackgroundColor(theme.get(ThemeColorType.BACKGROUND))
     backButton.setColorFilter(theme.get(ThemeColorType.TOOLBAR_ICON))
-    pageTitle.setTextColor(theme.get(ThemeColorType.TERTIARY_TEXT))
+     pageTitle.setTextColor(theme.get(ThemeColorType.TERTIARY_TEXT))
     importFile.setTextColor(theme.get(ThemeColorType.TERTIARY_TEXT))
     importFile.setBackgroundResource(
         if (CoreConfig.instance.themeController().isNightTheme()) R.drawable.light_circular_border_bg

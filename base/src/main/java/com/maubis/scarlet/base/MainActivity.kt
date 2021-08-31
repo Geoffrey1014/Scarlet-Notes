@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.widget.GridLayout.VERTICAL
@@ -61,6 +62,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.search_toolbar_main.*
 import kotlinx.android.synthetic.main.toolbar_trash_info.*
 import kotlinx.coroutines.*
+import java.lang.Exception
+import kotlin.math.log
 
 class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
   private val singleThreadDispatcher = newSingleThreadContext("singleThreadDispatcher")
@@ -207,6 +210,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
   }
 
   fun onLockedClick() {
+    Log.i("Themis", "onLockedClick: step 7: clcik 'locked'")
     config.resetMode(HomeNavigationState.LOCKED)
     GlobalScope.launch(Dispatchers.Main) {
       val items = GlobalScope.async(Dispatchers.IO) {
@@ -268,7 +272,12 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
             var notesCount = -1
             if (config.hasFilter()) {
               val folderConfig = config.copy()
-              folderConfig.folders.clear()
+              try {
+                folderConfig.folders.clear()
+              }catch (e : Exception){
+                Log.i("Themis", "unifiedSearchSynchronous: step last")
+                throw e
+              }
               folderConfig.folders.add(it)
               notesCount = unifiedSearchSynchronous(folderConfig).size
               if (notesCount == 0) {

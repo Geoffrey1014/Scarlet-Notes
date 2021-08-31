@@ -3,6 +3,7 @@ package com.maubis.scarlet.base.note.actions
 import android.app.Dialog
 import android.content.Intent
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.widget.GridLayout
 import android.widget.TextView
@@ -261,6 +262,7 @@ class NoteOptionsBottomSheet() : GridBottomSheetBase() {
         subtitle = R.string.lock_note,
         icon = R.drawable.ic_action_lock,
         listener = View.OnClickListener {
+            Log.i("Themis", "getNotePropertyOptions: step 5 : click lock_note")
           note.locked = true
           activity.updateNote(note)
           dismiss()

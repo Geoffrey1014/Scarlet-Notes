@@ -3,6 +3,7 @@ package com.maubis.scarlet.base.main.specs
 import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import android.text.Layout
+import android.util.Log
 import com.facebook.litho.Component
 import com.facebook.litho.ComponentContext
 import com.facebook.litho.Row
@@ -43,6 +44,8 @@ object MainActivityBottomBarSpec {
         .iconRes(R.drawable.ic_apps_white_48dp)
         .onClick {
           HomeNavigationBottomSheet.openSheet(activity)
+            Log.i("Themis", "onCreate: step 6 : click HomeNavigationBottomSheet(点击左下角的menu)")
+
         })
     row.child(EmptySpec.create(context).heightDip(1f).flexGrow(1f))
 
@@ -53,6 +56,7 @@ object MainActivityBottomBarSpec {
               activity,
               FolderBuilder().emptyFolder(sNoteDefaultColor),
               { _, _ -> activity.setupData() })
+            Log.i("Themis", "onCreate: step 1 : click icon_add_notebook")
         })
     row.child(bottomBarRoundIcon(context, colorConfig)
         .iconRes(R.drawable.icon_add_list)
@@ -68,7 +72,8 @@ object MainActivityBottomBarSpec {
           val intent = CreateNoteActivity.getNewNoteIntent(
               activity,
               activity.config.folders.firstOrNull()?.uuid ?: "")
-          activity.startActivity(intent)
+            activity.startActivity(intent)
+            Log.i("Themis", "onCreate: step 3 : click icon_add_note")
         })
     return bottomBarCard(context, row.build(), colorConfig).build()
   }
@@ -97,6 +102,8 @@ object MainActivityFolderBottomBarSpec {
           activity.config.folders.clear()
           activity.unifiedSearch()
           activity.notifyFolderChange()
+            Log.i("Themis", "onCreate: step 8: 点击 ”X“")
+
         })
     row.child(Text.create(context)
         .typeface(FONT_MONSERRAT)
