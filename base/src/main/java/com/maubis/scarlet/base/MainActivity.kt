@@ -210,7 +210,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
   }
 
   fun onLockedClick() {
-    Log.i("Themis", "onLockedClick: step 7: clcik 'locked'")
+    Log.i("Themis", "Event 7: Clicked \"Locked\" in the notebook menu.")
     config.resetMode(HomeNavigationState.LOCKED)
     GlobalScope.launch(Dispatchers.Main) {
       val items = GlobalScope.async(Dispatchers.IO) {
@@ -272,14 +272,14 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
             var notesCount = -1
             if (config.hasFilter()) {
               val folderConfig = config.copy()
+              folderConfig.folders.clear()
+              folderConfig.folders.add(it)
               try {
-                folderConfig.folders.clear()
+                notesCount = unifiedSearchSynchronous(folderConfig).size
               }catch (e : Exception){
-                Log.i("Themis", "unifiedSearchSynchronous: step last")
+                Log.i("Themis", "Crash!: Exception.")
                 throw e
               }
-              folderConfig.folders.add(it)
-              notesCount = unifiedSearchSynchronous(folderConfig).size
               if (notesCount == 0) {
                 return@async null
               }

@@ -41,7 +41,7 @@ class FolderRecyclerHolder(context: Context, view: View) : RecyclerViewHolder<Re
     view.setCardBackgroundColor(item.folder.color)
     view.setOnClickListener {
       item.click()
-      Log.i("Themis", "populate: step 2: 点击进入文件夹")
+      Log.i("Themis", "Event 2: Entered a notebook named: " + item.title)
     }
     view.setOnLongClickListener {
       item.longClick()

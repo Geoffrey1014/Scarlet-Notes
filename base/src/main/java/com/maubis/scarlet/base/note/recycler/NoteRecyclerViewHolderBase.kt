@@ -15,6 +15,7 @@ import com.maubis.scarlet.base.R
 import com.maubis.scarlet.base.database.room.note.Note
 import com.maubis.scarlet.base.core.note.NoteImage
 import com.maubis.scarlet.base.core.note.NoteState
+import com.maubis.scarlet.base.note.getTitle
 import com.maubis.scarlet.base.support.recycler.RecyclerItem
 import com.maubis.scarlet.base.support.ui.visibility
 import com.maubis.scarlet.base.support.utils.trim
@@ -67,7 +68,7 @@ open class NoteRecyclerViewHolderBase(context: Context, view: View) : RecyclerVi
     view.setOnClickListener { viewClick(item.note, extra) }
     view.setOnLongClickListener {
       viewLongClick(item.note, extra)
-      Log.i("Themis", "populate: step 4: longClick 一个 note")
+      Log.i("Themis", "Event 4: Long clicked a note named: " + item.note.getTitle())
       false
     }
     view.setCardBackgroundColor(item.note.color)

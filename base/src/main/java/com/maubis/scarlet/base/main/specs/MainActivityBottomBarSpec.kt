@@ -44,7 +44,7 @@ object MainActivityBottomBarSpec {
         .iconRes(R.drawable.ic_apps_white_48dp)
         .onClick {
           HomeNavigationBottomSheet.openSheet(activity)
-            Log.i("Themis", "onCreate: step 6 : click HomeNavigationBottomSheet(点击左下角的menu)")
+            Log.i("Themis", "Event 6: Clicked the menu on the left bottom.")
 
         })
     row.child(EmptySpec.create(context).heightDip(1f).flexGrow(1f))
@@ -56,7 +56,7 @@ object MainActivityBottomBarSpec {
               activity,
               FolderBuilder().emptyFolder(sNoteDefaultColor),
               { _, _ -> activity.setupData() })
-            Log.i("Themis", "onCreate: step 1 : click icon_add_notebook")
+            Log.i("Themis", "Event 1: Clicked \"Create New Notebook\" on the right bottom.")
         })
     row.child(bottomBarRoundIcon(context, colorConfig)
         .iconRes(R.drawable.icon_add_list)
@@ -73,7 +73,7 @@ object MainActivityBottomBarSpec {
               activity,
               activity.config.folders.firstOrNull()?.uuid ?: "")
             activity.startActivity(intent)
-            Log.i("Themis", "onCreate: step 3 : click icon_add_note")
+            Log.i("Themis", "Event 3: Clicked \"New note\" button on the right bottom.")
         })
     return bottomBarCard(context, row.build(), colorConfig).build()
   }
@@ -102,7 +102,7 @@ object MainActivityFolderBottomBarSpec {
           activity.config.folders.clear()
           activity.unifiedSearch()
           activity.notifyFolderChange()
-            Log.i("Themis", "onCreate: step 8: 点击 ”X“")
+            Log.i("Themis", "Event 8: Clicked the \"X\" on the left bottom to close the notebook.")
 
         })
     row.child(Text.create(context)
