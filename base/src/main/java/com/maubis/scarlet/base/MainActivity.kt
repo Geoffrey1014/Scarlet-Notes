@@ -210,7 +210,6 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
   }
 
   fun onLockedClick() {
-    Log.i("Themis", "Event 7: Clicked \"Locked\" in the notebook menu.")
     config.resetMode(HomeNavigationState.LOCKED)
     GlobalScope.launch(Dispatchers.Main) {
       val items = GlobalScope.async(Dispatchers.IO) {
@@ -220,6 +219,11 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
       }
       handleNewItems(items.await())
     }
+
+    if (notesDb.getNoteByLocked(true).size >= 1){
+      Log.i("Themis", "Event 7: Clicked \"Locked\" in the notebook menu and there exits at least one locked note.")
+    }
+
     notifyModeChange()
   }
 
@@ -277,6 +281,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
               try {
                 notesCount = unifiedSearchSynchronous(folderConfig).size
               }catch (e : Exception){
+//                Log.i("Themis", "Event 7:Clicked the \"X\" when locked notes are in a notebook")
                 Log.i("Themis", "Crash!: Exception.")
                 throw e
               }
@@ -306,6 +311,10 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
     allItems.addAll(unifiedSearchSynchronous(config)
         .map { GlobalScope.async(Dispatchers.IO) { NoteRecyclerItem(this@MainActivity, it) } }
         .map { it.await() })
+//    Log.i("Themis", "allItems.size: " + allItems.size )
+//    if (config.folders.size > 1){
+//      Log.i("Themis", "unifiedSearchSynchronous: " + "first folder :" + config.folders[1].title)
+//    }
     return allItems
   }
 
@@ -313,10 +322,13 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
     val componentContext = ComponentContext(this)
     lithoPreBottomToolbar.removeAllViews()
     if (config.folders.isEmpty()) {
+
       return
     }
 
     val folder = config.folders.first()
+//    Log.i("Themis", "notifyFolderChange: " + folder.title)
+
     lithoPreBottomToolbar.addView(LithoView.create(componentContext,
         MainActivityFolderBottomBar.create(componentContext)
             .folder(folder)
@@ -357,6 +369,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
       HomeNavigationState.LOCKED -> onLockedClick()
       HomeNavigationState.DEFAULT -> onHomeClick()
       else -> onHomeClick()
+
     }
   }
 
@@ -389,6 +402,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
   }
 
   override fun onBackPressed() {
+    Log.i("Themis", "Event 5: Pressed Back")
     when {
       isInSearchMode && searchBox.text.toString().isBlank() -> setSearchMode(false)
       isInSearchMode -> searchBox.setText("")

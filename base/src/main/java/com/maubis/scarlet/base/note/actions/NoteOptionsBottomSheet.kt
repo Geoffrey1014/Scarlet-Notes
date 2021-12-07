@@ -262,7 +262,7 @@ class NoteOptionsBottomSheet() : GridBottomSheetBase() {
         subtitle = R.string.lock_note,
         icon = R.drawable.ic_action_lock,
         listener = View.OnClickListener {
-            Log.i("Themis", "Event 5: Clicked \"Locked Note\" in the note menu.")
+            Log.i("Themis", "Event 4: Clicked \"Lock Note\" in the note menu.")
           note.locked = true
           activity.updateNote(note)
           dismiss()

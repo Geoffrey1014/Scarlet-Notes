@@ -2,6 +2,7 @@ package com.maubis.scarlet.base.note.folder.sheet
 
 import android.app.Dialog
 import android.content.Context
+import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -93,6 +94,8 @@ class CreateOrEditFolderBottomSheet : ThemedBottomSheetFragment() {
     }
     folder.updateTimestamp = System.currentTimeMillis()
     folder.save()
+    Log.i("Themis", "Event 1: Created a new notebook named:" + folder.title)
+
     return true
   }
 

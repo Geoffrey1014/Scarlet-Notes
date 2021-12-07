@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.util.Log
 import com.facebook.litho.ComponentContext
 import com.facebook.litho.LithoView
 import com.maubis.scarlet.base.R
@@ -49,6 +50,8 @@ open class CreateNoteActivity : ViewAdvancedNoteActivity() {
     super.onCreate(savedInstanceState)
     setTouchListener()
     startHandler()
+    Log.i("Themis", "Event 3: Create a \"New note\"")
+
   }
   
   override fun onCreationFinished() {

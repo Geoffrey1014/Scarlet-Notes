@@ -68,7 +68,8 @@ open class NoteRecyclerViewHolderBase(context: Context, view: View) : RecyclerVi
     view.setOnClickListener { viewClick(item.note, extra) }
     view.setOnLongClickListener {
       viewLongClick(item.note, extra)
-      Log.i("Themis", "Event 4: Long clicked a note named: " + item.note.getTitle())
+
+//      Log.i("Themis", "Event 4: Long clicked a note named: " + item.note.getTitle())
       false
     }
     view.setCardBackgroundColor(item.note.color)
