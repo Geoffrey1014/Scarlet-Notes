@@ -221,7 +221,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
     }
 
     if (notesDb.getNoteByLocked(true).size >= 1){
-      Log.i("Themis", "Event 7: Clicked \"Locked\" in the notebook menu and there exits at least one locked note.")
+      Log.i("Themis", "Event 6: Clicked \"Locked\" in the notebook menu and there exits at least one locked note.")
     }
 
     notifyModeChange()
@@ -402,7 +402,7 @@ class MainActivity : ThemedActivity(), INoteOptionSheetActivity {
   }
 
   override fun onBackPressed() {
-    Log.i("Themis", "Event 5: Pressed Back")
+//    Log.i("Themis", "Event 5: Pressed Back")
     when {
       isInSearchMode && searchBox.text.toString().isBlank() -> setSearchMode(false)
       isInSearchMode -> searchBox.setText("")

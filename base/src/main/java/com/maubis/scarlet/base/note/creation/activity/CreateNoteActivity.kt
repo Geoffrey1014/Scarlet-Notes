@@ -50,7 +50,7 @@ open class CreateNoteActivity : ViewAdvancedNoteActivity() {
     super.onCreate(savedInstanceState)
     setTouchListener()
     startHandler()
-    Log.i("Themis", "Event 3: Create a \"New note\"")
+//    Log.i("Themis", "Event 3: Create a \"New note\"")
 
   }
   
@@ -178,6 +178,7 @@ open class CreateNoteActivity : ViewAdvancedNoteActivity() {
       note!!.delete(this)
       return true
     }
+    Log.i("Themis", "Event 3: Create a \"New note\"")
     return false
   }
 

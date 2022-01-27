@@ -103,7 +103,7 @@ object MainActivityFolderBottomBarSpec {
           activity.config.folders.clear()
           activity.unifiedSearch()
           activity.notifyFolderChange()
-            Log.i("Themis", "Event 6: Clicked the \"X\" on the left bottom to close the notebook.")
+            Log.i("Themis", "Event 5: Clicked the \"X\" on the left bottom to close the notebook.")
 
         })
     row.child(Text.create(context)
